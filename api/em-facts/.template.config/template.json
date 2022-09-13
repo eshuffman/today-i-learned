@@ -1,0 +1,56 @@
+﻿{
+ "$schema": "http://json.schemastore.org/template",
+ "author": "ehuffman",
+ "classifications": [],
+ "description": "",
+ "name": "EmTemplate.API",
+ "defaultName": "EmTemplate.API",
+ "identity": "MyTemplate.EmFacts.CSharp",
+ "groupIdentity": "MyTemplate.EmFacts",
+ "tags": {
+   "language": "C#",
+   "type": "project",
+   "vsmac-category": "other/net/general"
+ },
+ "shortName": "EmTemplate.API",
+ "sourceName": "EmFacts",
+ "guids": [
+   "{4A9C2CE4-6ADC-4E49-8120-C30B44F4FFF7}",
+   "{FA6AAAB3-B69F-4C63-95A9-954E0FB580D2}",
+   "{C5516EFC-B047-4D1E-B128-901EC4B37A20}",
+   "{77D2A5F4-460E-4C3C-9114-BE598A7C000A}",
+   "{66C58620-DDEF-4E7A-8637-4C2F78401875}",
+   "{D2D06D94-9721-4476-8DA2-6027489564C6}"
+ ],
+ "sources": [
+   {
+     "modifiers": [
+       {
+         "exclude": [
+           ".vs/**/*"
+         ]
+       }
+     ]
+   }
+ ],
+ "primaryOutputs": [
+   {
+     "path": "EmFacts/EmFacts.csproj"
+   },
+   {
+     "path": "EmFacts.Data/EmFacts.Data.csproj"
+   },
+   {
+     "path": "EmFacts.DTOs/EmFacts.DTOs.csproj"
+   },
+   {
+     "path": "EmFacts.Provider/EmFacts.Provider.csproj"
+   },
+   {
+     "path": "EmFacts.Tests/EmFacts.Tests.csproj"
+   },
+   {
+     "path": "EmFacts.Utilities/EmFacts.Utilities.csproj"
+   }
+ ]
+}

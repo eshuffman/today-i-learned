@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Providers\" />
+    <None Remove="AutoMapper" />
+    <None Remove="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Providers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmFacts.Data\EmFacts.Data.csproj" />
+    <ProjectReference Include="..\EmFacts.Utilities\EmFacts.Utilities.csproj" />
+    <ProjectReference Include="..\EmFacts.DTOs\EmFacts.DTOs.csproj" />
+  </ItemGroup>
+</Project>
