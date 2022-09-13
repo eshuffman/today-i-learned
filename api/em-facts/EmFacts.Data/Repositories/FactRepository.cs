@@ -36,6 +36,14 @@ namespace EmFacts.Data.Repositories
                 .ToListAsync();
         }
 
+        public async Task<Fact> GetFactByIdAsync(int Id)
+        {
+            return await _ctx.Facts
+                .AsNoTracking()
+                .Where(f => f.Id == Id)
+                .SingleOrDefaultAsync();
+        }
+
         public async Task<Fact> DeleteFactByIdAsync(int Id)
         {
             var fact = await _ctx.Facts

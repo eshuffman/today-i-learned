@@ -13,5 +13,6 @@ namespace EmFacts.Data.Interfaces
         Task<Fact> CreateFactAsync(Fact fact);
         Task<IEnumerable<Fact>> GetAllFactsAsync();
         Task<Fact> DeleteFactByIdAsync(int Id);
+        Task<Fact> GetFactByIdAsync(int Id);
     }
 }

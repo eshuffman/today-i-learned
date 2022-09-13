@@ -53,6 +53,16 @@ namespace EmFacts.API.Controllers
             return Ok(factDTOs);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<FactsDTO>> GetFactByIdAsync(int id)
+        {
+            _logger.LogInformation($"Request received for GetFactByIdAsync for id: {id}");
+
+            var fact = await _factProvider.GetFactByIdAsync(id);
+            var factDTO = _mapper.Map<FactsDTO>(fact);
+
+            return Ok(factDTO);
+        }
         [HttpDelete("{Id}")]
         public async Task<ActionResult<FactsDTO>> DeleteFactByIdAsync(int Id)
         {
