@@ -4,16 +4,15 @@ import {
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Home from '../home/Home';
-import Navbar from '../navbar/Navbar';
+//import Home from '../home/Home';
+import Landing from '../landing/Landing';
 import Why from '../why/Why';
 
 const App = () => (
   <BrowserRouter>
-    <Navbar />
     <div id="content">
       <Routes>
-        <Route path="/" element={ <Home />} />
+        <Route path="/" element={ <Landing />} />
         <Route path="/why" element={ <Why />} />
       </Routes>
       <ToastContainer

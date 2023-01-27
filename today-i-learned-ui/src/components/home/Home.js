@@ -6,17 +6,18 @@ import styles from './Home.module.css';
 
 function Home() {
 
-  const [newFact, setNewFact] = useState({question: '', fact: ''})
+  const [newFact, setNewFact] = useState({question: '', tidbit: ''})
 
   const factInfo = {
     question: (newFact.question),
-    fact: (newFact.fact)
+    tidbit: (newFact.tidbit)
   }
   /**
    * attemptFactSubmit posts new question and corresponding fact to API. A success or error toast is displayed as appropraite.
    * If fields are not filled out, the post does not happen.
    */
   const attemptFactSubmit = () => {
+      console.log(factInfo)
       postNewFact(factInfo)
         .catch(() => {
           toast.error("A server error occured. Your fact could not be added to the Fact Vault.");
@@ -51,12 +52,12 @@ function Home() {
             onChange={onFactChange}
           />
           <TextField
-            id="fact"
+            id="tidbit"
             multiline
             rows={4}
             label="Please input fact you would like to remember."
             variant="standard"
-            value={newFact.fact}
+            value={newFact.tidbit}
             onChange={onFactChange}
         />
         <Button variant="outlined" onClick={attemptFactSubmit}>Submit</Button>
