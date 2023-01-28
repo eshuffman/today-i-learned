@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Landing.module.css';
+import { NavLink } from 'react-router-dom';
 
 function Landing() {
 
@@ -50,10 +51,12 @@ function Landing() {
 
               <button onClick={handleFactReviewClick}>
                 Let's get started with today's fact review!
-              </button>
+        </button>
+        <NavLink to="/facts">
               <button onClick={handleAllFactsClick}>
                 I'd like to see all my facts, please.
-              </button>
+          </button>
+          </NavLink>
               <button onClick={handleTutorialPageClick}>
                 Help! I'm new here!
               </button>
