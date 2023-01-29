@@ -49,15 +49,15 @@ function Landing() {
             Welcome back to BrainReps! What would you like to do today?
           </p>
 
-              <button onClick={handleFactReviewClick}>
+              <button className={styles.landingButton} onClick={handleFactReviewClick}>
                 Let's get started with today's fact review!
         </button>
         <NavLink to="/facts">
-              <button onClick={handleAllFactsClick}>
+              <button className={styles.landingButton} onClick={handleAllFactsClick}>
                 I'd like to see all my facts, please.
           </button>
           </NavLink>
-              <button onClick={handleTutorialPageClick}>
+              <button className={styles.landingButton} onClick={handleTutorialPageClick}>
                 Help! I'm new here!
               </button>
         </div>

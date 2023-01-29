@@ -18,7 +18,7 @@
     display: flex;
 }
 
-button {
+.landingButton {
     border-radius: 1em;
     display: inline-block;
     border: none;
@@ -39,7 +39,7 @@ button {
     -moz-appearance: none;
 }
 
-button:hover {
+.landingButton:hover {
     background: #65837c;
 }
 
