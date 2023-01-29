@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace EmFacts.API.Controllers
 {
     /// <summary>
-    /// The PromoCodeController exposes endpoints for promo code related actions.
+    /// The Facts Controller exposes endpoints for fact-related actions.
     /// </summary>
     [ApiController]
     [Route("/facts")]
@@ -77,6 +77,19 @@ namespace EmFacts.API.Controllers
                 return NotFound($"No fact with ID: {Id} exists in the database");
             }
 
+        }
+        
+        [HttpPut("{id}")]
+        public async Task<ActionResult<FactsDTO>> UpdateFactAsync(
+            int id, [FromBody] FactsDTO factToUpdate)
+        {
+            _logger.LogInformation("Request received for UpdateFactAsync");
+
+            var fact = _mapper.Map<Fact>(factToUpdate);
+            var updatedFact = await _factProvider.UpdateFactAsync(id, fact);
+            var factDTO = _mapper.Map<FactsDTO>(updatedFact);
+
+            return Ok(factDTO);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace EmFacts.Provider.Providers
 {
     /// <summary>
-    /// This class provides the implementation of the IPromoCodeProvider interface, providing service methods for promo codes.
+    /// This class provides the implementation of the IFactProvider interface, providing service methods for facts.
     /// </summary>
     public class FactProvider : IFactProvider
     {
@@ -24,16 +24,17 @@ namespace EmFacts.Provider.Providers
         }
 
         /// <summary>
-        /// Persists a promo code to the database.
+        /// Persists a fact to the database.
         /// </summary>
-        /// <param name="model">PromoCodeDTO used to build the promo code.</param>
-        /// <returns>The persisted promo code with IDs.</returns>
+        /// <param name="model">FactDTO used to build the fact.</param>
+        /// <returns>The persisted fact with ID.</returns>
         public async Task<Fact> CreateFactAsync(Fact newFact)
         {
       
             Fact savedFact;
 
-           
+            ValidateFactInputFields(newFact);
+
             try
             {
                 savedFact = await _factRepository.CreateFactAsync(newFact);
@@ -103,6 +104,86 @@ namespace EmFacts.Provider.Providers
             }
             return fact;
         }
+
+        public async Task<Fact> UpdateFactAsync(int id, Fact updatedFact)
+        {
+            Fact existingFact;
+
+
+            try
+            {
+                existingFact = await _factRepository.GetFactByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new ServiceUnavailableException("There was a problem connecting to the database.");
+            }
+
+            if (existingFact == default)
+            {
+                _logger.LogInformation($"Fact with id of {id} does not exist.");
+                throw new NotFoundException($"Fact with id of {id} not found.");
+            }
+
+            if (existingFact.Id != updatedFact.Id)
+            {
+                if (updatedFact.Id == default)
+                {
+                    updatedFact.Id = existingFact.Id;
+                }
+                else throw new BadRequestException("Fact ID cannot be changed.");
+            }
+
+            ValidateFactInputFields(updatedFact);
+
+            try
+            {
+                await _factRepository.UpdateFactAsync(updatedFact);
+                _logger.LogInformation("Fact updated.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new ServiceUnavailableException("There was a problem connecting to the database.");
+            }
+
+            return updatedFact;
+        }
+
+        //Validation Methods
+
+        public void ValidateFactInputFields(Fact fact)
+        {
+            List<string> factExceptions = new();
+
+            if (ValidateIfEmptyOrNull(fact.Question))
+            {
+                factExceptions.Add("Question is required.");
+            }
+            
+            if (ValidateIfEmptyOrNull(fact.Tidbit))
+            {
+                factExceptions.Add("Tidbit is required.");
+            }
+
+            if (ValidateIfEmptyOrNull(fact.Tier.ToString()))
+            {
+                factExceptions.Add("Tier is required.");
+            }
+
+            if (factExceptions.Count > 0)
+            {
+                _logger.LogInformation(" ", factExceptions);
+                throw new BadRequestException(string.Join(" ", factExceptions));
+            }
+        }
+
+        public bool ValidateIfEmptyOrNull(string modelField)
+        {
+            return string.IsNullOrWhiteSpace(modelField);
+        }
+
     }
 
 }

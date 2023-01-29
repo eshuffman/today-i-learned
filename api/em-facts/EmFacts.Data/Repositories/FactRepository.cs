@@ -54,5 +54,13 @@ namespace EmFacts.Data.Repositories
             await _ctx.SaveChangesAsync();
             return fact;
         }
+
+        public async Task<Fact> UpdateFactAsync(Fact fact)
+        {
+            _ctx.Facts.Update(fact);
+            await _ctx.SaveChangesAsync();
+
+            return fact;
+        }
     }
 }
