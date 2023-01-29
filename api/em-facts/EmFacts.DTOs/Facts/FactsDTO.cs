@@ -1,7 +1,7 @@
 ﻿namespace EmFacts.DTOs
 {
     /// <summary>
-    /// Describes a data transfer object for a promo code.
+    /// Describes a data transfer object for a fact.
     /// </summary>
     public class FactsDTO
     {
@@ -13,6 +13,6 @@
 
         public string Tags { get; set; }
 
-        public string Tier { get; set; }
+        public int Tier { get; set; }
     }
 }

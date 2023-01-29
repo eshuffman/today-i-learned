@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'EmFacts.API' " />
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'FactsAPI' " />
   <ItemGroup>
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
