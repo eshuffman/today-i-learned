@@ -57,10 +57,11 @@
     background-color: transparent;
     border: none;
     color: #444343;
-    font-weight:bolder
+    font-weight:bold;
 }
 
 .allFactsButton:hover{
-    border-bottom: 2px solid #444343 ;
+    border-bottom: 2px solid #444343;
+
 }
 
