@@ -1,4 +1,3 @@
-import { queryByRole } from '@testing-library/react';
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import styles from './AllFacts.module.css';
@@ -60,7 +59,7 @@ const AllFacts = () => {
         return (
             <div className={styles.factContainer}>
                 <p className={styles.fact}> {fact.question} </p>
-                <p className={styles.fact}> {fact.tags}</p>
+                <p className={styles.fact}> {fact.tags.join(', ')}</p>
                 <p className={styles.fact}> {fact.tier}</p>
                 <div className={styles.buttonContainer}>
                 <button className={styles.allFactsButton} onClick={handleDetailClick}>DETAILS</button>

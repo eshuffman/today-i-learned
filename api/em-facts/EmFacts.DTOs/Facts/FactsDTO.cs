@@ -11,7 +11,7 @@
 
         public string Tidbit { get; set; }
 
-        public string Tags { get; set; }
+        public string[] Tags { get; set; }
 
         public int Tier { get; set; }
     }
