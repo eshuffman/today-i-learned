@@ -17,7 +17,7 @@ const App = () => (
         <Route path="/" element={ <Landing />} />
         <Route path="/why" element={<Why />} />
         <Route path="/facts" element={<AllFacts />} />
-        <Route path="/facts/reviews" element={<FactsForReview />} />
+        <Route path="/facts/review" element={<FactsForReview />} />
       </Routes>
       <ToastContainer
         position="top-center"

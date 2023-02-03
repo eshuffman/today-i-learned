@@ -81,7 +81,7 @@ namespace EmFacts.API.Controllers
 
         }
 
-        [HttpGet("/review/{date}")]
+        [HttpGet("review/{date}")]
         public async Task<ActionResult<IEnumerable<FactsDTO>>> GetFactsByDateAsync(DateTime date)
         {
             _logger.LogInformation($"Request received for GetFactsByDate for date: {date}");

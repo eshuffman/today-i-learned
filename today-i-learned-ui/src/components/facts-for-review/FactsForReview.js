@@ -12,17 +12,19 @@ import { fetchDailyFacts } from '../all-facts/FactsService';
 const FactsForReview = () => {
   const [facts, setFacts] = useState([]);
   const date = new Date()
+  const month = date.getUTCMonth() < 10 ? `0${date.getUTCMonth()+1}` : date.getUTCMonth()+1
+  const dateDay = date.getUTCDate() < 10 ? `0${date.getUTCDate()}` : date.getUTCDay()
+  const utcDate = `${date.getUTCFullYear()}-${month}-${dateDay}`
   /**
    * UseEffect to fetch facts for review from database and set them in a useState for use in displaying on page load.
    */
   useEffect(() => {
-    console.log(date.date, 'hi')
-      fetchDailyFacts(date, setFacts)
-        
+    console.log(utcDate)
+      fetchDailyFacts(utcDate, setFacts)   
       .catch(() => {
         toast.error('Brain freeze! We\'re having trouble loading your facts right now. Try again in a sec.');
       });
-  }, []);
+  },[utcDate]);
 
 
 
@@ -43,11 +45,11 @@ const FactsForReview = () => {
 
     
     function ReviewFact({fact}) {
-        
-      const loadNextFact = () => {
-          const nextFact = fact.id + 1
-            console.log(`details about fact ${nextFact}`)
-      }
+
+      // const loadNextFact = () => {
+      //     const nextFact = fact.id + 1
+      //       console.log(`details about fact ${nextFact}`)
+      // }
       
 
         
