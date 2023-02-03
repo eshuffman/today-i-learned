@@ -4,6 +4,7 @@ using EmFacts.DTOs;
 using EmFacts.Provider.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -63,6 +64,7 @@ namespace EmFacts.API.Controllers
 
             return Ok(factDTO);
         }
+
         [HttpDelete("{Id}")]
         public async Task<ActionResult<FactsDTO>> DeleteFactByIdAsync(int Id)
         {
@@ -78,7 +80,18 @@ namespace EmFacts.API.Controllers
             }
 
         }
-        
+
+        [HttpGet("/review/{date}")]
+        public async Task<ActionResult<IEnumerable<FactsDTO>>> GetFactsByDateAsync(DateTime date)
+        {
+            _logger.LogInformation($"Request received for GetFactsByDate for date: {date}");
+
+            var facts = await _factProvider.GetFactsByDateAsync(date);
+            var factDTOs = _mapper.Map<IEnumerable<FactsDTO>>(facts);
+
+            return Ok(factDTOs);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<FactsDTO>> UpdateFactAsync(
             int id, [FromBody] FactsDTO factToUpdate)

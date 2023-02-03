@@ -4,17 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 function Landing() {
 
-    const handleFactReviewClick = () => {
-        console.log('hi')
-    }
-
-    const handleAllFactsClick = () => {
-        console.log('all facts plz')
-    }
-
-    const handleTutorialPageClick = () => {
-        console.log('wut')
-    }
 //   const [newFact, setNewFact] = useState({question: '', tidbit: ''})
 
 //   const factInfo = {
@@ -48,18 +37,21 @@ function Landing() {
           <p className={styles.welcome}>
             Welcome back to BrainReps! What would you like to do today?
           </p>
-
-              <button className={styles.landingButton} onClick={handleFactReviewClick}>
-                Let's get started with today's fact review!
-        </button>
-        <NavLink to="/facts">
-              <button className={styles.landingButton} onClick={handleAllFactsClick}>
-                I'd like to see all my facts, please.
+          <NavLink to="/facts/review">
+              <button className={styles.landingButton}>
+                Let's get started with today's fact review! 
           </button>
           </NavLink>
-              <button className={styles.landingButton} onClick={handleTutorialPageClick}>
+        <NavLink to="/facts">
+              <button className={styles.landingButton}>
+                I'd like to see all my facts, please.
+          </button>
+        </NavLink>
+        
+              <button className={styles.landingButton}>
                 Help! I'm new here!
-              </button>
+          </button>
+          
         </div>
     </div>
   );

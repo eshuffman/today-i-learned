@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EmFacts.Data.Model;
 
@@ -14,5 +15,6 @@ namespace EmFacts.Provider.Interfaces
         Task<Fact> DeleteFactByIdAsync(int Id);
         Task<Fact> GetFactByIdAsync(int id);
         Task<Fact> UpdateFactAsync(int id, Fact fact);
+        Task<IEnumerable<Fact>> GetFactsByDateAsync(DateTime date);
     }
 }

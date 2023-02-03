@@ -3,6 +3,7 @@ using EmFacts.Data.Interfaces;
 using EmFacts.Data.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -44,6 +45,13 @@ namespace EmFacts.Data.Repositories
                 .SingleOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<Fact>> GetFactsByDateAsync(DateTime date)
+        {
+            return await _ctx.Facts
+                .AsNoTracking()
+                .Where(f => f.ReviewDate.Day == date.Day && f.ReviewDate.Month == date.Month)
+                .ToListAsync();
+        }
         public async Task<Fact> DeleteFactByIdAsync(int Id)
         {
             var fact = await _ctx.Facts

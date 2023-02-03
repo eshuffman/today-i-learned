@@ -36,4 +36,15 @@ async function deleteFact(factToDelete) {
     });
 }
 
-export { fetchFacts, deleteFact };
+async function fetchDailyFacts(date, setFacts) {
+  await HttpHelper(`${constants.FACTS_ENDPOINT}/review/${date}`, 'GET')
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error(constants.API_ERROR);
+  })
+  .then(setFacts);
+}
+
+export { fetchFacts, deleteFact, fetchDailyFacts };

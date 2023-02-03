@@ -94,6 +94,25 @@ namespace EmFacts.Provider.Providers
             return fact;
         }
 
+        public async Task<IEnumerable<Fact>> GetFactsByDateAsync(DateTime date)
+        {
+            IEnumerable<Fact> facts;
+
+            try
+            {
+                facts = await _factRepository.GetFactsByDateAsync(date);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw new ServiceUnavailableException("There was a problem connecting to the database.");
+            }
+
+            //maybe throw in a check if there aren't any returned facts
+
+            return facts;
+        }
+
         public async Task<Fact> DeleteFactByIdAsync(int Id)
         {
             var fact = await _factRepository.DeleteFactByIdAsync(Id);

@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Landing from '../landing/Landing';
 import Why from '../why/Why';
 import AllFacts from '../all-facts/AllFacts';
+import FactsForReview from '../facts-for-review/FactsForReview';
 
 const App = () => (
   <BrowserRouter>
@@ -15,7 +16,8 @@ const App = () => (
       <Routes>
         <Route path="/" element={ <Landing />} />
         <Route path="/why" element={<Why />} />
-        <Route path="/facts" element={ <AllFacts />} />
+        <Route path="/facts" element={<AllFacts />} />
+        <Route path="/facts/reviews" element={<FactsForReview />} />
       </Routes>
       <ToastContainer
         position="top-center"
