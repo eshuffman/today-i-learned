@@ -47,4 +47,14 @@ async function fetchDailyFacts(date, setFacts) {
   .then(setFacts);
 }
 
-export { fetchFacts, deleteFact, fetchDailyFacts };
+async function updateFact(factId, newFactInfo) {
+  await HttpHelper(`${constants.FACTS_ENDPOINT}/${factId}`, 'PUT', newFactInfo)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(constants.API_ERROR);
+    });
+}
+
+export { fetchFacts, deleteFact, fetchDailyFacts, updateFact };

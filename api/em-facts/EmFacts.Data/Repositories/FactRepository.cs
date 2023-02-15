@@ -52,6 +52,7 @@ namespace EmFacts.Data.Repositories
                 .Where(f => f.ReviewDate.Day == date.Day && f.ReviewDate.Month == date.Month)
                 .ToListAsync();
         }
+
         public async Task<Fact> DeleteFactByIdAsync(int Id)
         {
             var fact = await _ctx.Facts
