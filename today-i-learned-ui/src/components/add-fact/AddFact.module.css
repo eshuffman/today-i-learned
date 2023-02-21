@@ -1,0 +1,15 @@
+.box {
+    position: absolute;
+    right: 75px;
+    bottom: 50px;
+}
+
+.icon {
+    color:#789b93;
+    cursor: pointer;
+}
+
+.modelBox {
+    height: 60vh;
+    width: 40vw;
+}

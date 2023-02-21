@@ -57,4 +57,15 @@ async function updateFact(factId, newFactInfo) {
     });
 }
 
-export { fetchFacts, deleteFact, fetchDailyFacts, updateFact };
+async function addFact(newFactInfo) {
+  await HttpHelper(constants.FACTS_ENDPOINT, 'POST', newFactInfo)
+    .then((response) => {
+      if (response.ok) {
+        toast.success('Get ready to learn! Your fact has successfully been added to the database!');
+        return response.json();
+      }
+      throw new Error(constants.API_ERROR);
+    });
+}
+
+export { fetchFacts, deleteFact, fetchDailyFacts, updateFact, addFact };

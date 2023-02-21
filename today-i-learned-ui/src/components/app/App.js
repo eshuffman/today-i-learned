@@ -9,6 +9,7 @@ import Landing from '../landing/Landing';
 import Why from '../why/Why';
 import AllFacts from '../all-facts/AllFacts';
 import FactsForReview from '../facts-for-review/FactsForReview';
+import AddFact from '../add-fact/AddFact';
 
 const App = () => (
   <BrowserRouter>
@@ -30,6 +31,9 @@ const App = () => (
         draggable={false}
         pauseOnHover={false}
       />
+      <div>
+        <AddFact />
+      </div>
     </div>
   </BrowserRouter>
 );
