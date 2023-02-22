@@ -53,12 +53,12 @@ const AddFact = () => {
   }
   
   function AddFactModel() {
-      console.log('hi')
         return (
           <div>
             <Dialog open={showModel} onClose={() => setShowModel(false)} >
               <div className={styles.modelBox}>
                 <h1>Add New Fact</h1>
+                <div className={styles.input}>
                 <div className={styles.formLabel}>
               Question
                 </div>
@@ -72,7 +72,7 @@ const AddFact = () => {
             <div className={styles.formLabel}>
               Tidbit
                 </div>
-            <input
+            <textarea
               id="tidbit"
               placeholder="Please enter tidbit of information related to your question."
               type="text"
@@ -88,8 +88,11 @@ const AddFact = () => {
               type="text"
               value={newFact.imgsrc}
               onChange={onQuestionChange}
-            />
-                <button onClick={attemptFactSubmit}>Submit</button>
+                  />
+                </div>
+                <div className={styles.buttonBox}> 
+                  <button className={styles.submit} onClick={attemptFactSubmit}>Submit</button>
+                </div>
               </div>
             </Dialog>
             </div>
